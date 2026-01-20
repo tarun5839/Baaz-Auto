@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, Facebook, Instagram, ArrowUp, Download } from 'lucide-react'
 import Logo from './Logo'
 
@@ -8,12 +9,13 @@ const Footer = () => {
   }
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Why Choose Us', href: '#why-us' },
-    { name: 'Our Process', href: '#process' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Products', href: '/products' },
+    { name: 'Blogs & Feedback', href: '/blogs' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Terms & Conditions', href: '/terms' },
   ]
 
   const products = [
@@ -27,7 +29,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/baazpulley/', label: 'Facebook' },
-    { icon: Instagram, href: 'https://www.instagram.com/_baazpulley_?igsh=cHdmaXBpNWNhbG8z&utm_source=qr', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/_baazpulley_', label: 'Instagram' },
   ]
 
   return (
@@ -55,9 +57,9 @@ const Footer = () => {
               Get in touch with India's No. 1 Pulley Manufacturer. We offer competitive pricing and pan-India delivery.
             </p>
             <div className="relative flex flex-wrap justify-center gap-4">
-              <a href="#contact" className="px-8 py-4 bg-industrial-900 text-white font-display font-bold uppercase tracking-wider rounded-lg hover:bg-industrial-800 transition-colors shadow-xl">
+              <Link to="/contact" className="px-8 py-4 bg-industrial-900 text-white font-display font-bold uppercase tracking-wider rounded-lg hover:bg-industrial-800 transition-colors shadow-xl">
                 Get Quote Now
-              </a>
+              </Link>
               <a href="/BAAZ-Catalogue.pdf" download className="px-8 py-4 bg-white/20 backdrop-blur text-industrial-900 font-display font-bold uppercase tracking-wider rounded-lg hover:bg-white/30 transition-colors flex items-center gap-2">
                 <Download size={18} /> Catalogue
               </a>
@@ -82,6 +84,8 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-10 h-10 bg-industrial-800/50 rounded-xl flex items-center justify-center text-industrial-400 hover:bg-primary-500 hover:text-industrial-900 transition-all duration-300"
                 >
@@ -100,13 +104,14 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
+                    onClick={scrollToTop}
                     className="text-industrial-400 hover:text-primary-500 transition-colors flex items-center gap-2 group text-sm"
                   >
                     <span className="w-1.5 h-1.5 bg-primary-500/50 rounded-full group-hover:bg-primary-500 transition-colors" />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -121,13 +126,13 @@ const Footer = () => {
             <ul className="space-y-3">
               {products.map((product, index) => (
                 <li key={index}>
-                  <a
-                    href="#products"
+                  <Link
+                    to="/products"
                     className="text-industrial-400 hover:text-primary-500 transition-colors flex items-center gap-2 group text-sm"
                   >
                     <span className="w-1.5 h-1.5 bg-primary-500/50 rounded-full group-hover:bg-primary-500 transition-colors" />
                     {product}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -141,11 +146,11 @@ const Footer = () => {
             </h4>
             <ul className="space-y-4">
               <li>
-                <a href="tel:+919990094513" className="flex items-start gap-3 text-industrial-400 hover:text-primary-500 transition-colors group">
+                <a href="tel:+919315020967" className="flex items-start gap-3 text-industrial-400 hover:text-primary-500 transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-500/20">
                     <Phone size={14} className="text-primary-500" />
                   </div>
-                  <span className="text-sm">+91 9990094513</span>
+                  <span className="text-sm">+91 9315020967<br/>+91 9990094513</span>
                 </a>
               </li>
               <li>
@@ -157,12 +162,17 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-industrial-400">
-                  <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
+                <a 
+                  href="https://maps.app.goo.gl/zhjQ6KUS9M9TKZih6?g_st=iw" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-industrial-400 hover:text-primary-500 transition-colors group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-500/20">
                     <MapPin size={14} className="text-primary-500" />
                   </div>
                   <span className="text-sm">Plot No. 130, Pocket C, Sector 5<br />DSIDC Industrial Area, Bawana<br />Delhi - 110039, India</span>
-                </div>
+                </a>
               </li>
             </ul>
           </div>
@@ -173,10 +183,16 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-industrial-500 text-sm text-center md:text-left">
-            © {new Date().getFullYear()} BAAZ - Kalgidhar Auto Mobiles. All rights reserved. | 
-            Made in India 🇮🇳 with ❤️
-          </p>
+          <div className="text-industrial-500 text-sm text-center md:text-left">
+            <p>© {new Date().getFullYear()} BAAZ - Kalgidhar Auto Mobiles. All rights reserved.</p>
+            <p className="mt-1">
+              <Link to="/privacy-policy" onClick={scrollToTop} className="hover:text-primary-500 transition-colors">Privacy Policy</Link>
+              {' | '}
+              <Link to="/terms" onClick={scrollToTop} className="hover:text-primary-500 transition-colors">Terms & Conditions</Link>
+              {' | '}
+              Made in India 🇮🇳
+            </p>
+          </div>
           
           {/* Back to Top */}
           <button
