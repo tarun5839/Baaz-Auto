@@ -68,52 +68,6 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* Product List */}
-      <section className="py-12 bg-industrial-900/50">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto bg-industrial-900/50 rounded-2xl p-8 md:p-10 border border-industrial-800"
-          >
-            <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">
-              Our <span className="gradient-text">Products</span>
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Power steering pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Engine pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Alternator pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Water pump pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Tensioner pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Machinery pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors md:col-span-2 lg:col-span-3 justify-center">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Casting and forging goods</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Products Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
@@ -173,6 +127,52 @@ const ProductsPage = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Product List */}
+      <section className="py-12 bg-industrial-900/50">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto bg-industrial-900/50 rounded-2xl p-8 md:p-10 border border-industrial-800"
+          >
+            <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">
+              Our <span className="gradient-text">Products</span>
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Power steering pulley</span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Engine pulley</span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Alternator pulley</span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Water pump pulley</span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Tensioner pulley</span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Machinery pulley</span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors md:col-span-2 lg:col-span-3 justify-center">
+                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
+                <span className="text-white font-medium">Casting and forging goods</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
