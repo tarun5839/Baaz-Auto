@@ -1,10 +1,45 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ChevronRight, Zap, Cog, CircleDot, Settings, CheckCircle } from 'lucide-react'
+import { ChevronRight, ChevronLeft, Zap, Cog, CircleDot, Settings, CheckCircle, X, Eye } from 'lucide-react'
 import Gallery from '../components/Gallery'
 
 const ProductsPage = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+
+  // Product images mapping
+  const productImages = {
+    'Power steering pulley': [],
+    'Engine pulley': [],
+    'Alternator pulley': ['/images/alternater.jpg'],
+    'Water pump pulley': [],
+    'Idler pulley': ['/images/idler.jpeg'],
+    'Machinery pulley': ['/images/machinery.jpeg'],
+    'Casting and forging goods': ['/images/castingforging.jpeg']
+  }
+
+  const openProductModal = (productName) => {
+    const images = productImages[productName]
+    if (images && images.length > 0) {
+      setSelectedProduct({ name: productName, images })
+      setSelectedImageIndex(0)
+    }
+  }
+
+  const closeProductModal = () => {
+    setSelectedProduct(null)
+    setSelectedImageIndex(0)
+  }
+
+  const navigateImage = (direction) => {
+    if (!selectedProduct) return
+    const newIndex = direction === 'next'
+      ? (selectedImageIndex + 1) % selectedProduct.images.length
+      : (selectedImageIndex - 1 + selectedProduct.images.length) % selectedProduct.images.length
+    setSelectedImageIndex(newIndex)
+  }
+
   const products = [
     {
       name: 'Starting Pulley',
@@ -142,35 +177,37 @@ const ProductsPage = () => {
             <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">
               Our <span className="gradient-text">Products</span>
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Power steering pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Engine pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Alternator pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Water pump pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Tensioner pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Machinery pulley</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-industrial-800/50 rounded-lg border border-industrial-700/50 hover:border-primary-500/30 transition-colors md:col-span-2 lg:col-span-3 justify-center">
-                <CheckCircle className="text-primary-400 flex-shrink-0" size={20} />
-                <span className="text-white font-medium">Casting and forging goods</span>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                'Power steering pulley',
+                'Engine pulley',
+                'Alternator pulley',
+                'Water pump pulley',
+                'Idler pulley',
+                'Machinery pulley',
+                'Casting and forging goods'
+              ].map((productName, index) => {
+                const hasImages = productImages[productName] && productImages[productName].length > 0
+                return (
+                  <div
+                    key={index}
+                    onClick={() => hasImages && openProductModal(productName)}
+                    className={`flex items-start gap-3 p-3 rounded-lg border transition-all duration-300 relative ${
+                      hasImages 
+                        ? 'group bg-industrial-800/50 border-primary-500/30 hover:border-primary-500 hover:bg-primary-500/10 cursor-pointer hover:shadow-lg hover:shadow-primary-500/20 hover:scale-[1.02]' 
+                        : 'bg-industrial-800/50 border-industrial-700/50'
+                    } ${index === 6 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+                  >
+                    <CheckCircle className={`flex-shrink-0 mt-0.5 transition-colors duration-300 ${hasImages ? 'text-primary-400 group-hover:text-primary-300' : 'text-primary-400'}`} size={20} />
+                    <span className={`font-medium leading-relaxed transition-colors duration-300 flex-1 ${hasImages ? 'text-white group-hover:text-primary-300' : 'text-white'}`}>{productName}</span>
+                    {hasImages && (
+                      <div className="absolute bottom-2 right-2 w-6 h-6 bg-primary-500/20 rounded-full flex items-center justify-center group-hover:bg-primary-500/30 transition-colors animate-eye-blink">
+                        <Eye className="text-primary-400 group-hover:text-primary-300 transition-colors" size={14} />
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </motion.div>
         </div>
@@ -231,11 +268,11 @@ const ProductsPage = () => {
           >
             <h2 className="text-3xl font-display font-bold text-white mb-3">Need Custom Pulleys?</h2>
             <p className="text-industrial-300 mb-6 max-w-xl mx-auto">
-              We manufacture custom pulleys as per your specifications. Contact us for bulk orders.
+              We manufacture custom pulleys as per your specifications and client requirements. Contact us for bulk orders.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact" className="btn-primary">Request Quote</Link>
-              <a href="/BAAZ-Catalogue.pdf" download className="btn-outline">📄 Download Catalogue</a>
+              <a href="/BAAZ-List.pdf" download className="btn-outline">📄 Download Catalogue</a>
             </div>
           </motion.div>
         </div>
@@ -243,6 +280,66 @@ const ProductsPage = () => {
 
       {/* Products Gallery */}
       <Gallery />
+
+      {/* Product Image Modal */}
+      <AnimatePresence>
+        {selectedProduct && selectedProduct.images.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+            onClick={closeProductModal}
+          >
+            <button 
+              onClick={closeProductModal}
+              className="absolute top-4 right-4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+            >
+              <X size={24} />
+            </button>
+
+            {selectedProduct.images.length > 1 && (
+              <>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }}
+                  className="absolute left-4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+                >
+                  <ChevronLeft size={28} />
+                </button>
+
+                <button 
+                  onClick={(e) => { e.stopPropagation(); navigateImage('next'); }}
+                  className="absolute right-4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+                >
+                  <ChevronRight size={28} />
+                </button>
+              </>
+            )}
+
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={selectedProduct.images[selectedImageIndex]}
+                alt={selectedProduct.name}
+                className="w-full max-h-[80vh] object-contain rounded-lg"
+              />
+              <div className="text-center mt-4">
+                <p className="text-white font-display font-bold text-lg">{selectedProduct.name}</p>
+                {selectedProduct.images.length > 1 && (
+                  <p className="text-industrial-400 text-sm mt-1">
+                    {selectedImageIndex + 1} / {selectedProduct.images.length}
+                  </p>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

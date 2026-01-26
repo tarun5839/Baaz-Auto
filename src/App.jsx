@@ -40,7 +40,7 @@ function App() {
         
         {/* WhatsApp Floating Button */}
         <a
-          href="https://wa.me/919315020967?text=Hi%20BAAZ%20Team,%20I%20am%20interested%20in%20your%20pulleys."
+          href="https://wa.me/919315020967?text=Hi%20BAAZ%20Team,%20I%20am%20interested%20in%20your%20pulley%20products.%20Could%20you%20please%20share%20the%20product%20catalog%20and%20pricing%20details?"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:scale-110 hover:shadow-xl transition-all duration-300 group"

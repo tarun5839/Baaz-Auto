@@ -8,8 +8,9 @@ const HomePage = () => {
     <div className="relative">
       <Hero />
       
-      {/* Trust Badge - Middle of first page */}
-      <div className="absolute top-1/2 right-6 -translate-y-1/2 z-30 hidden lg:block">
+      {/* Trust Badges - Middle of first page */}
+      <div className="absolute top-1/2 right-6 -translate-y-1/2 z-30 hidden lg:block space-y-3">
+        {/* Trust Badge */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -25,6 +26,28 @@ const HomePage = () => {
             <div>
               <p className="text-xs text-industrial-400">Since 1967</p>
               <p className="text-sm font-semibold text-white">57+ Years Trust</p>
+            </div>
+          </div>
+        </motion.div>
+        
+        {/* ISO Certification Badge */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="glass rounded-2xl p-4 backdrop-blur-xl"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-16 h-16 rounded-lg bg-white/10 p-2 flex items-center justify-center overflow-hidden">
+              <img 
+                src="/images/ISO.jpeg" 
+                alt="ISO Certified" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <p className="text-xs text-industrial-400">Quality Certified</p>
+              <p className="text-sm font-semibold text-white">ISO Certified</p>
             </div>
           </div>
         </motion.div>

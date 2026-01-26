@@ -17,6 +17,7 @@ const About = () => {
   const businessSpecs = [
     { icon: Building2, label: 'Business Type', value: 'Manufacturer, Exporter, Wholesaler, Supplier' },
     { icon: Calendar, label: 'Established', value: '1967 (57+ Years)' },
+    { icon: BadgeCheck, label: 'Certification', value: 'ISO Certified' },
     { icon: FileText, label: 'GST TIN', value: '07AXKPS7998E1ZL' },
     { icon: Warehouse, label: 'Warehousing', value: 'Yes' },
     { icon: Factory, label: 'Production Units', value: '02 Units' },
@@ -177,8 +178,16 @@ const About = () => {
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                 className="bg-industrial-900/50 rounded-xl p-4 border border-industrial-800 hover:border-primary-500/30 transition-all"
               >
-                <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center mb-3">
-                  <spec.icon className="text-primary-400" size={20} />
+                <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center mb-3 overflow-hidden">
+                  {spec.label === 'Certification' ? (
+                    <img 
+                      src="/images/ISO.jpeg" 
+                      alt="ISO Certified" 
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <spec.icon className="text-primary-400" size={20} />
+                  )}
                 </div>
                 <p className="text-xs text-industrial-500 uppercase tracking-wide mb-1">{spec.label}</p>
                 <p className="text-sm font-semibold text-white">{spec.value}</p>

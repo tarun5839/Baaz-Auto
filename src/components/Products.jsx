@@ -153,7 +153,7 @@ const Products = () => {
           
           {/* Download Catalogue Button */}
           <a 
-            href="/BAAZ-Catalogue.pdf" 
+            href="/BAAZ-List.pdf" 
             download
             className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-500 hover:bg-primary-500 hover:text-industrial-900 transition-all duration-300"
           >
@@ -274,7 +274,7 @@ const Products = () => {
           className="text-center mt-16"
         >
           <p className="text-industrial-400 mb-6">
-            Need a specific pulley? We manufacture custom pulleys as per your requirements.
+            Need a specific pulley? We manufacture custom pulleys as per your requirements and client specifications.
           </p>
           <a href="#contact" className="btn-primary inline-flex items-center gap-2">
             Request Custom Quote <ArrowRight size={18} />

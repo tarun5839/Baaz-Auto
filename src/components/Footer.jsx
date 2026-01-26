@@ -60,7 +60,7 @@ const Footer = () => {
               <Link to="/contact" className="px-8 py-4 bg-industrial-900 text-white font-display font-bold uppercase tracking-wider rounded-lg hover:bg-industrial-800 transition-colors shadow-xl">
                 Get Quote Now
               </Link>
-              <a href="/BAAZ-Catalogue.pdf" download className="px-8 py-4 bg-white/20 backdrop-blur text-industrial-900 font-display font-bold uppercase tracking-wider rounded-lg hover:bg-white/30 transition-colors flex items-center gap-2">
+              <a href="/BAAZ-List.pdf" download className="px-8 py-4 bg-white/20 backdrop-blur text-industrial-900 font-display font-bold uppercase tracking-wider rounded-lg hover:bg-white/30 transition-colors flex items-center gap-2">
                 <Download size={18} /> Catalogue
               </a>
             </div>

@@ -32,15 +32,32 @@ const Hero = () => {
           {/* Left Side - Text Content */}
           <div>
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 bg-primary-500/10 border border-primary-500/20 rounded-full px-4 py-2 mb-6"
-            >
-              <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-              <span className="text-primary-400 font-medium text-sm">Since 1967 • Delhi, India</span>
-            </motion.div>
+            <div className="flex flex-wrap gap-3 mb-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-3 bg-primary-500/10 border border-primary-500/20 rounded-full px-4 py-2"
+              >
+                <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+                <span className="text-primary-400 font-medium text-sm">Since 1967 • Delhi, India</span>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center gap-2.5 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1.5"
+              >
+                <div className="w-6 h-6 rounded bg-white/10 p-1 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/images/ISO.jpeg" 
+                    alt="ISO Certified" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="text-blue-400 font-medium text-sm">ISO Certified</span>
+              </motion.div>
+            </div>
 
             {/* Company Name */}
             <motion.div
@@ -75,12 +92,46 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="max-w-2xl mb-8"
           >
-            <div className="space-y-2">
-              <p className="text-primary-400 font-display font-semibold text-sm uppercase tracking-wider mb-3">
+            <div className="space-y-3">
+              <p className="text-primary-400 font-display font-semibold text-sm uppercase tracking-wider mb-4">
                 Our Products
               </p>
-              <p className="text-white text-base leading-relaxed">
-                Power steering pulley, Engine pulley, Alternator pulley, Water pump pulley, Tensioner pulley, Machinery pulley, and Casting and forging goods.
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {[
+                  'Power Steering Pulleys',
+                  'Engine Pulleys',
+                  'Alternator Pulleys',
+                  'Water Pump Pulleys',
+                  'Idler Pulleys',
+                  'Machinery Pulleys',
+                  'Casting & Forging Goods'
+                ].map((product, index) => (
+                  <div key={index} className="flex items-start gap-2.5 text-white/90 text-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0 mt-1.5" />
+                    <span className="leading-relaxed">{product}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Customization Tagline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="mb-8"
+          >
+            <div className="inline-flex items-center gap-2.5 bg-primary-500/10 border border-primary-500/30 rounded-full px-5 py-2.5 backdrop-blur-sm shadow-lg shadow-primary-500/10">
+              <div className="w-8 h-8 rounded-full bg-primary-500/20 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-400">
+                  <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"></path>
+                  <path d="M12 8v8"></path>
+                  <path d="M8 12h8"></path>
+                </svg>
+              </div>
+              <p className="text-primary-300 font-medium text-sm">
+                We believe in <span className="text-primary-400 font-semibold">customization</span> according to customer needs
               </p>
             </div>
           </motion.div>
@@ -99,7 +150,7 @@ const Hero = () => {
                 View Products
               </Link>
               <a 
-                href="/BAAZ-Catalogue.pdf" 
+                href="/BAAZ-List.pdf" 
                 download
                 className="inline-flex items-center gap-2 px-6 py-4 bg-industrial-800/50 border border-industrial-700 rounded-lg text-white font-medium hover:bg-industrial-800 hover:border-primary-500/30 transition-all"
               >

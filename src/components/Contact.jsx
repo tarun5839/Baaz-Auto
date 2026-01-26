@@ -118,7 +118,7 @@ const Contact = () => {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/919990094513?text=Hi%20BAAZ%20Team,%20I%20am%20interested%20in%20your%20pulleys."
+              href="https://wa.me/919990094513?text=Hi%20BAAZ%20Team,%20I%20am%20interested%20in%20your%20pulley%20products.%20Could%20you%20please%20share%20the%20product%20catalog%20and%20pricing%20details?"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 p-4 bg-green-600 hover:bg-green-500 rounded-xl transition-colors duration-300"
