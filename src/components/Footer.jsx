@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin, Facebook, Instagram, ArrowUp, Download } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Instagram, ArrowUp, Download, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
 
 const Footer = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+
+  // Product images mapping
+  const productImages = {
+    'Power steering pulley': ['/images/powersteeringpulley.jpeg'],
+    'Engine pulley': ['/images/enginepulley.jpg'],
+    'Alternator pulley': ['/images/alternater.jpg'],
+    'Water pump pulley': ['/images/waterpumppulley.jpeg'],
+    'Idler pulley': ['/images/idler.jpeg'],
+    'Machinery pulley': ['/images/machinery.jpeg'],
+    'Casting and forging goods': ['/images/castingforging.jpeg']
+  }
+
+  const openProductModal = (productName) => {
+    const images = productImages[productName]
+    if (images && images.length > 0) {
+      setSelectedProduct({ name: productName, images })
+      setSelectedImageIndex(0)
+    }
+  }
+
+  const closeProductModal = () => {
+    setSelectedProduct(null)
+    setSelectedImageIndex(0)
+  }
+
+  const navigateImage = (direction) => {
+    if (!selectedProduct) return
+    const newIndex = direction === 'next'
+      ? (selectedImageIndex + 1) % selectedProduct.images.length
+      : (selectedImageIndex - 1 + selectedProduct.images.length) % selectedProduct.images.length
+    setSelectedImageIndex(newIndex)
+  }
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -19,12 +55,13 @@ const Footer = () => {
   ]
 
   const products = [
-    'Alternator Pulleys',
-    'Crankshaft Pulleys',
-    'Timing Belt Pulleys',
-    'Idler Pulleys',
-    'Decoupler Pulleys',
-    'V-Belt Pulleys',
+    'Power steering pulley',
+    'Engine pulley',
+    'Alternator pulley',
+    'Water pump pulley',
+    'Idler pulley',
+    'Machinery pulley',
+    'Casting and forging goods'
   ]
 
   const socialLinks = [
@@ -124,17 +161,22 @@ const Footer = () => {
               Our Products
             </h4>
             <ul className="space-y-3">
-              {products.map((product, index) => (
-                <li key={index}>
-                  <Link
-                    to="/products"
-                    className="text-industrial-400 hover:text-primary-500 transition-colors flex items-center gap-2 group text-sm"
-                  >
-                    <span className="w-1.5 h-1.5 bg-primary-500/50 rounded-full group-hover:bg-primary-500 transition-colors" />
-                    {product}
-                  </Link>
-                </li>
-              ))}
+              {products.map((productName, index) => {
+                const hasImages = productImages[productName] && productImages[productName].length > 0
+                return (
+                  <li key={index}>
+                    <button
+                      onClick={() => hasImages && openProductModal(productName)}
+                      className={`text-industrial-400 hover:text-primary-500 transition-colors flex items-center gap-2 group text-sm w-full text-left ${
+                        hasImages ? 'cursor-pointer' : 'cursor-default'
+                      }`}
+                    >
+                      <span className="w-1.5 h-1.5 bg-primary-500/50 rounded-full group-hover:bg-primary-500 transition-colors" />
+                      {productName}
+                    </button>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
@@ -204,6 +246,66 @@ const Footer = () => {
           </button>
         </div>
       </div>
+
+      {/* Product Image Modal */}
+      <AnimatePresence>
+        {selectedProduct && selectedProduct.images.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+            onClick={closeProductModal}
+          >
+            <button 
+              onClick={closeProductModal}
+              className="absolute top-4 right-4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+            >
+              <X size={24} />
+            </button>
+
+            {selectedProduct.images.length > 1 && (
+              <>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }}
+                  className="absolute left-4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+                >
+                  <ChevronLeft size={28} />
+                </button>
+
+                <button 
+                  onClick={(e) => { e.stopPropagation(); navigateImage('next'); }}
+                  className="absolute right-4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+                >
+                  <ChevronRight size={28} />
+                </button>
+              </>
+            )}
+
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={selectedProduct.images[selectedImageIndex]}
+                alt={selectedProduct.name}
+                className="w-full max-h-[80vh] object-contain rounded-lg"
+              />
+              <div className="text-center mt-4">
+                <p className="text-white font-display font-bold text-lg">{selectedProduct.name}</p>
+                {selectedProduct.images.length > 1 && (
+                  <p className="text-industrial-400 text-sm mt-1">
+                    {selectedImageIndex + 1} / {selectedProduct.images.length}
+                  </p>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   )
 }

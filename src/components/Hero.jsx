@@ -1,9 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Phone, Award, Factory, Users, Download } from 'lucide-react'
+import { ArrowRight, Phone, Award, Factory, Users, Download, Wrench } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Hero = () => {
+
   const stats = [
     { number: '57+', label: 'Years Experience', icon: Award },
     { number: '50K', label: 'Monthly Capacity', icon: Factory },
@@ -37,25 +38,25 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-3 bg-primary-500/10 border border-primary-500/20 rounded-full px-4 py-2"
+                className="inline-flex items-center gap-2.5 bg-gradient-to-r from-primary-500/15 to-primary-600/10 border border-primary-500/30 rounded-lg px-4 py-2.5 backdrop-blur-sm shadow-lg shadow-primary-500/10"
               >
-                <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-                <span className="text-primary-400 font-medium text-sm">Since 1967 • Delhi, India</span>
+                <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse ring-2 ring-primary-500/50" />
+                <span className="text-primary-300 font-semibold text-sm tracking-wide">Since 1967 • Delhi, India</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center gap-2.5 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1.5"
+                className="inline-flex items-center gap-2.5 bg-gradient-to-r from-blue-500/15 to-blue-600/10 border border-blue-500/30 rounded-lg px-4 py-2.5 backdrop-blur-sm shadow-lg shadow-blue-500/10"
               >
-                <div className="w-6 h-6 rounded bg-white/10 p-1 flex items-center justify-center overflow-hidden">
+                <div className="w-7 h-7 rounded-md bg-white/10 p-1 flex items-center justify-center overflow-hidden ring-1 ring-blue-400/20">
                   <img 
                     src="/images/ISO.jpeg" 
                     alt="ISO Certified" 
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <span className="text-blue-400 font-medium text-sm">ISO Certified</span>
+                <span className="text-blue-300 font-semibold text-sm tracking-wide">ISO Certified</span>
               </motion.div>
             </div>
 
@@ -77,43 +78,13 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-20 md:mb-24"
             >
               India's No. 1{' '}
               <span className="gradient-text">Pulley</span>
               <br />
               Manufacturer
             </motion.h1>
-
-          {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-2xl mb-8"
-          >
-            <div className="space-y-3">
-              <p className="text-primary-400 font-display font-semibold text-sm uppercase tracking-wider mb-4">
-                Our Products
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {[
-                  'Power Steering Pulleys',
-                  'Engine Pulleys',
-                  'Alternator Pulleys',
-                  'Water Pump Pulleys',
-                  'Idler Pulleys',
-                  'Machinery Pulleys',
-                  'Casting & Forging Goods'
-                ].map((product, index) => (
-                  <div key={index} className="flex items-start gap-2.5 text-white/90 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0 mt-1.5" />
-                    <span className="leading-relaxed">{product}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
 
           {/* Customization Tagline */}
           <motion.div
@@ -122,16 +93,14 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-2.5 bg-primary-500/10 border border-primary-500/30 rounded-full px-5 py-2.5 backdrop-blur-sm shadow-lg shadow-primary-500/10">
-              <div className="w-8 h-8 rounded-full bg-primary-500/20 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-400">
-                  <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"></path>
-                  <path d="M12 8v8"></path>
-                  <path d="M8 12h8"></path>
-                </svg>
+            <div className="inline-flex items-center gap-3 bg-industrial-900/60 backdrop-blur-xl border border-primary-500/30 rounded-2xl px-5 py-3 shadow-2xl shadow-primary-500/10 hover:shadow-primary-500/20 hover:border-primary-500/50 transition-all duration-300">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-600/10 flex items-center justify-center ring-1 ring-primary-500/20">
+                <Wrench className="text-primary-400" size={16} />
               </div>
-              <p className="text-primary-300 font-medium text-sm">
-                We believe in <span className="text-primary-400 font-semibold">customization</span> according to customer needs
+              <p className="text-primary-100 font-display text-sm md:text-base leading-relaxed">
+                <span className="text-primary-400 text-lg md:text-xl mr-1 font-serif">"</span>
+                We specialize in <span className="text-primary-300 font-semibold">customized solutions</span> tailored to your specific needs
+                <span className="text-primary-400 text-lg md:text-xl ml-1 font-serif">"</span>
               </p>
             </div>
           </motion.div>
@@ -250,42 +219,6 @@ const Hero = () => {
 
             {/* Main Logo Circle */}
             <div className="relative z-10">
-              {/* Rotating Border Circle */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute w-[380px] h-[380px] rounded-full border border-primary-500/10"
-                style={{ 
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%) rotate(137.758deg)',
-                  transformOrigin: 'center'
-                }}
-              />
-              
-              {/* Light Ring Lines - Outer */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 w-64 h-64 border border-primary-500/30 rounded-full"
-              />
-              
-              {/* Light Ring Lines - Middle */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 w-72 h-72 border border-primary-400/20 rounded-full"
-                style={{ left: '-16px', top: '-16px' }}
-              />
-              
-              {/* Light Ring Lines - Inner */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 w-56 h-56 border border-primary-300/25 rounded-full"
-                style={{ left: '4px', top: '4px' }}
-              />
-              
               {/* Main Circle Container */}
               <div className="relative w-64 h-64 rounded-full flex items-center justify-center">
                 <motion.div
@@ -311,7 +244,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Contact Badge - Fixed Right */}
+        {/* Contact Badge - Fixed Right (Desktop) */}
         <motion.a
           href="tel:+919315020967"
           initial={{ opacity: 0, x: 50 }}

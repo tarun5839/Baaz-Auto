@@ -10,10 +10,10 @@ const ProductsPage = () => {
 
   // Product images mapping
   const productImages = {
-    'Power steering pulley': [],
-    'Engine pulley': [],
+    'Power steering pulley': ['/images/powersteeringpulley.jpeg'],
+    'Engine pulley': ['/images/enginepulley.jpg'],
     'Alternator pulley': ['/images/alternater.jpg'],
-    'Water pump pulley': [],
+    'Water pump pulley': ['/images/waterpumppulley.jpeg'],
     'Idler pulley': ['/images/idler.jpeg'],
     'Machinery pulley': ['/images/machinery.jpeg'],
     'Casting and forging goods': ['/images/castingforging.jpeg']

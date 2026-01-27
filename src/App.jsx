@@ -38,6 +38,25 @@ function App() {
         {/* Contact Popup - appears after 4 seconds */}
         <ContactPopup />
         
+        {/* Call Us Now Badge - Mobile (Above WhatsApp) */}
+        <a
+          href="tel:+919315020967"
+          className="lg:hidden fixed bottom-24 right-6 z-40 flex items-center justify-center bg-primary-500 text-white rounded-full shadow-lg shadow-primary-500/30 hover:scale-110 hover:shadow-xl transition-all duration-300 w-14 h-14 group"
+          aria-label="Call Us Now"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          
+          {/* Pulse Effect */}
+          <span className="absolute inset-0 rounded-full bg-primary-500 animate-ping opacity-30" />
+          
+          {/* Tooltip */}
+          <span className="absolute right-full mr-3 px-3 py-2 bg-industrial-900 text-white text-sm rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Call Us
+          </span>
+        </a>
+
         {/* WhatsApp Floating Button */}
         <a
           href="https://wa.me/919315020967?text=Hi%20BAAZ%20Team,%20I%20am%20interested%20in%20your%20pulley%20products.%20Could%20you%20please%20share%20the%20product%20catalog%20and%20pricing%20details?"
